@@ -271,3 +271,18 @@ function crop_image($file, $ext, $max_resolution)
             }
         }
     }
+
+function dbconnect(){
+	try{
+		$servername= 'localhost';
+		$username='root';
+		$password='';
+        $db_name= '';
+		$con = new pdo("mysql:host=localhost;dbname=$db_name",$username, $password);
+		$con-> setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+		return $con;
+	}catch(PDOException $e){
+		echo 'Error establishing connection' . $e->getMessage();
+
+	}
+}
